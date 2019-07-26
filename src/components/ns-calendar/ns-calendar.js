@@ -1,27 +1,15 @@
-// Import the LitElement base class and html helper function
 import { LitElement, html } from 'lit-element';
-
-// Extend the LitElement base class
+import {CalendarHelper,DateSystem} from '../../services/CalendarHelper';
 class NsCalendar extends LitElement {
-
-  /**
-   * Implement `render` to define a template for your element.
-   *
-   * You must provide an implementation of `render` for any element
-   * that uses LitElement as a base class.
-   */
+  constructor() {
+    super();
+    let date = CalendarHelper.getCurrentDate();
+    console.log(CalendarHelper.getDaysInMonth(DateSystem.getFullYear(), DateSystem.getMonth()));
+  }
   render(){
-    /**
-     * `render` must return a lit-html `TemplateResult`.
-     *
-     * To create a `TemplateResult`, tag a JavaScript template literal
-     * with the `html` helper function:
-     */
     return html`
-      <!-- template content -->
       <p>Calendario</p>
     `;
   }
 }
-// Register the new element with the browser.
 customElements.define('ns-calendar', NsCalendar);
